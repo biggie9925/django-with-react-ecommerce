@@ -9,7 +9,7 @@ function Header() {
                 <Container>
 
                     <LinkContainer to="/">
-                        <Navbar.Brand><i class="fa-solid fa-house"></i> Home</Navbar.Brand> 
+                        <Navbar.Brand><i className="fa-solid fa-house"></i> Home</Navbar.Brand> 
                     </LinkContainer>
                     
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
