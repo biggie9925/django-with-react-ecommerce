@@ -4,7 +4,6 @@ import { Row, Col } from 'react-bootstrap'
 import Product from '../components/Product'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
-import axios from 'axios'
 import { listProducts } from '../actions/productActions'
 
 
@@ -29,6 +28,7 @@ function HomeScreen() {
   }, [dispatch])
 
   return (
+
     <div>
       <h1>Latest Products</h1>
 
