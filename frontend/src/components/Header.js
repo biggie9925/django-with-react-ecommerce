@@ -41,8 +41,24 @@ function Header() {
                                 </NavDropdown>
                             ) : (
                                 <LinkContainer to="login">
-                                <Nav.Link><i className="fas fa-user"></i> Login</Nav.Link>
+                                    <Nav.Link><i className="fas fa-user"></i> Login</Nav.Link>
                                 </LinkContainer>
+                            )}
+
+                            {userInfo && userInfo.isAdmin && (
+                                <NavDropdown title="Admin" id="adminmenu">
+                                    <LinkContainer to="/admin/userlist ">
+                                        <NavDropdown.Item>Users</NavDropdown.Item>
+                                    </LinkContainer>
+
+                                    <LinkContainer to="/admin/productlist ">
+                                        <NavDropdown.Item>Products</NavDropdown.Item>
+                                    </LinkContainer>
+
+                                    <LinkContainer to="/admin/orderlist ">
+                                        <NavDropdown.Item>Orders</NavDropdown.Item>
+                                    </LinkContainer>
+                                </NavDropdown>
                             )}
                         </Nav>
 
@@ -55,11 +71,8 @@ function Header() {
                             <LinkContainer to="contact" >
                                 <Nav.Link><i className="fas fa-phone"></i> Contact</Nav.Link>
                             </LinkContainer>
-
                         </Nav>
-
                     </Navbar.Collapse>
-
                 </Container>
             </Navbar>
         </header>
