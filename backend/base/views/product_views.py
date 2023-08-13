@@ -4,15 +4,47 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 from base.products import products
 from base.models import Product, Review
+from django.db.models import F
 from base.serializers import ProductSerializer
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from rest_framework import status
 
 @api_view(['GET'])
 def getProducts(request):
-    products = Product.objects.all()
+ 
+    query = request.query_params.get('keyword')
+
+    if query == None:
+        query = ''
+    
+    #products = Product.objects.all()
+    itemsPerPage = 8
+    products = Product.objects.filter(name__icontains=query).order_by(F('_id').asc())
+    page = request.query_params.get('page')
+    paginator = Paginator(products, itemsPerPage)
+ 
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
+ 
+    if page == None:
+        page = 1
+ 
+    page = int(page)
+
     serializer = ProductSerializer(products, many=True)
-    return Response(serializer.data)
+    return Response({
+        'products': serializer.data,
+        'page': page,
+        'pages': paginator.num_pages,
+    })
+
+
+
 
 
 @api_view(['GET'])
@@ -76,12 +108,12 @@ def createProductReview(request, pk):
     alreadyExists = product.review_set.filter(user=user).exists()
 
     if (alreadyExists):
-        content = {"details": "Product Already Reviewed"}
+        content = {"detail": "Product Already Reviewed"}
         return Response(content, status=status.HTTP_400_BAD_REQUEST)
     
     #2 no rating or 0 rating
     elif data['rating'] == 0:
-        content = {"details": "Please enter a Rating"}
+        content = {"detail": "Please enter a Rating"}
         return Response(content, status=status.HTTP_400_BAD_REQUEST)
 
     #3 create review
