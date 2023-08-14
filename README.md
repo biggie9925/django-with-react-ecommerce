@@ -14,7 +14,7 @@ To run this application you can:
 4. Install npm and start frontend application (npm start)
 
 ![alt text](https://github.com/biggie9925/django-with-react-ecommerce/blob/main/screenshots/1.jpg?raw=true)
-![alt text](https://github.com/biggie9925/django-with-react-ecommerce/tree/main/screenshots/2.jpg?raw=true)
-![alt text](https://github.com/biggie9925/django-with-react-ecommerce/blob/main/3.jpg?raw=true)
-![alt text](https://github.com/biggie9925/django-with-react-ecommerce/tree/main/4.jpg?raw=true)
-![alt text](https://github.com/biggie9925/django-with-react-ecommerce/blob/main/5.jpg?raw=true)
+![alt text](https://github.com/biggie9925/django-with-react-ecommerce/blob/main/screenshots/2.jpg?raw=true)
+![alt text](https://github.com/biggie9925/django-with-react-ecommerce/blob/main/screenshots/3.jpg?raw=true)
+![alt text](https://github.com/biggie9925/django-with-react-ecommerce/blob/main/screenshots/4.jpg?raw=true)
+![alt text](https://github.com/biggie9925/django-with-react-ecommerce/blob/main/screenshots/5.jpg?raw=true)
